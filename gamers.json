@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Bad Wolf",
+      "logo": "img/client_logo/badwolf.png"
+    },
+    {
+      "name": "Ninja",
+      "logo": "img/client_logo/ninja.png"
+    },
+    {
+      "name": "Robot",
+      "logo": "img/client_logo/robot.png"
+    },
+    {
+      "name": "Con",
+      "logo": "img/client_logo/con.png"
+    },
+    {
+      "name": "Deamon",
+      "logo": "img/client_logo/deamon.png"
+    },
+    {
+      "name": "Rabbit",
+      "logo": "img/client_logo/rabbit.png"
+    }
+  ]
+  

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall of Fame</title>
+    <link rel="icon" href="img/apple-touch-icon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+     <!-- ios support -->
+     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+     <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+     <meta name="theme-color" content="#0d0b1a">
+     <style>
+        body {
+            font-family: 'Arial, sans-serif';
+            text-align: center;
+            background-image: url("img/body_bg.png"); 
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+            background-color: #000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: left;
+            color: #fff;
+        }
+
+        th {
+            background-color: #e60707;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+            font-size: 20px;
+        }
+
+        tbody tr:hover {
+            background-color: #3a2e2e;
+        }
+
+        #noScoresMessage {
+            font-size: 18px;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        #playNowButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #playNowButton{
+            background-color: #45a049;
+            width: auto;
+            padding: 10px 20px;
+        }
+      
+    </style>
+</head>
+<body>
+    <h1>Hall of Fame</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>High Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Menja Ninja</td>
+                <td id="menjaNinjaScore">Loading...</td>
+            </tr>
+            <tr>
+                <td>Snake Game</td>
+                <td id="snakeGameScore">Loading...</td>
+            </tr>
+            <tr>
+                <td>Planet Saver</td>
+                <td id="planetSaverScore">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="noScoresMessage" style="display:none;">No High Scores available.</p>
+    <br><br><br><br>
+    <div><a href="Index.html" id="playNowButton" class="btn_1" style="width: 300px; padding: 10px 20px;">Back To Home</a></div>
+    <br><br><br><br>
+  <!--::footer_part start::-->
+  <footer class="footer_part">
+    
+    <div class="copygight_text">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="copyright_text">
+                        <P> Copyright &copy; <script>document.write(new Date().getFullYear());</script> | All rights reserved | Designed By Ayantha Seneviratne </P>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer_icon social_icon">
+                        <ul class="list-unstyled">
+                            <li><a href="https://web.facebook.com/fbgaminghome?_rdc=1&_rdr" target="_blank" class="single_social_icon"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li><a href="https://twitter.com/xGaming" target="_blank" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="Index.html" target="_blank" class="single_social_icon"><i class="fas fa-globe"></i></a></li>
+                            <li><a href="https://www.instagram.com/gaming/" target="_blank" class="single_social_icon"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        const getHighScore = (key) => {
+            const raw = localStorage.getItem(key);
+            return raw ? parseInt(raw, 10) : 0;
+        };
+    
+        // Fetch high scores and populate the table cells
+        const menjaNinjaScore = getHighScore('Menja_Ninja_High_Score');
+        const snakeGameScore = getHighScore('Snake_Game_High_Score');
+        const planetSaverScore = getHighScore('Planet_Save_High_Score');
+    
+        // Get references to table cells and the "No high scores" message
+        const menjaNinjaScoreCell = document.getElementById('menjaNinjaScore');
+        const snakeGameScoreCell = document.getElementById('snakeGameScore');
+        const planetSaverScoreCell = document.getElementById('planetSaverScore');
+        const noScoresMessage = document.getElementById('noScoresMessage');
+    
+        // Check if there are no high scores for any game
+        if (menjaNinjaScore === 0 && snakeGameScore === 0 && planetSaverScore === 0) {
+            noScoresMessage.style.display = 'block';
+        } else {
+            // Populate the table cells with high scores
+            menjaNinjaScoreCell.textContent = menjaNinjaScore;
+            snakeGameScoreCell.textContent = snakeGameScore;
+            planetSaverScoreCell.textContent = planetSaverScore;
+        }
+    </script>
+       <script src="js/app.js"></script>
+</body>
+</html>
